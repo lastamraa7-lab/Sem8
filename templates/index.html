@@ -1,0 +1,211 @@
+
+<!doctype html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMEZONE | Play Beyond Limits</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="/" class="logo">🎮 GAME<span>ZONE</span></a>
+
+    <input type="text" id="search" placeholder="🔍 Search games...">
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#games">Games</a>
+        <a href="#leaderboard">Leaderboard</a>
+    </nav>
+
+    <div class="account">
+        <button class="login" onclick="showAccount('Login')">Login</button>
+        <button class="register" onclick="showAccount('Register')">Register</button>
+    </div>
+</header>
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="subtitle">THE ULTIMATE GAMING EXPERIENCE</span>
+            <h1>BLUE <span>LOCK</span></h1>
+            <h2>PLAY. CHALLENGE. BE THE BEST.</h2>
+            <p>Enter the arena. Challenge yourself. Become number one.</p>
+
+            <button onclick="document.getElementById('games').scrollIntoView({behavior:'smooth'})">
+                ▶ START PLAYING
+            </button>
+        </div>
+
+        <div class="hero-decoration">⚽</div>
+    </section>
+
+    <!-- CATEGORIES -->
+
+    <section class="categories">
+        <button class="category active" onclick="filterGames('all', this)">All Games</button>
+        <button class="category" onclick="filterGames('arcade', this)">🎮 Arcade</button>
+        <button class="category" onclick="filterGames('puzzle', this)">🧩 Puzzle</button>
+        <button class="category" onclick="filterGames('sports', this)">⚽ Sports</button>
+        <button class="category" onclick="filterGames('action', this)">⚔️ Action</button>
+    </section>
+
+    <!-- POPULAR GAMES -->
+
+    <section class="game-section" id="games">
+
+        <div class="section-heading">
+            <h2>🔥 Popular Games</h2>
+            <span>CHOOSE YOUR GAME</span>
+        </div>
+
+        <div class="game-grid" id="gameGrid">
+
+            <!-- CLICK CHALLENGE -->
+
+            <article class="game-card"
+                data-category="arcade"
+                data-name="click challenge">
+
+                <div class="game-image purple">
+                    <img
+                        src="{{ url_for('static', filename='images/click-challenge.jpg') }}"
+                        alt="Click Challenge">
+                </div>
+
+                <div class="game-info">
+                    <h3>Click Challenge</h3>
+                    <p>⭐ 4.9 <span>Arcade</span></p>
+                    <button onclick="playGame('click')">▶ Play Now</button>
+                </div>
+            </article>
+
+            <!-- MEMORY GAME -->
+
+            <article class="game-card"
+                data-category="puzzle"
+                data-name="memory game">
+
+                <div class="game-image blue">🧠</div>
+
+                <div class="game-info">
+                    <h3>Memory Game</h3>
+                    <p>⭐ 4.8 <span>Puzzle</span></p>
+                    <button onclick="playGame('memory')">▶ Play Now</button>
+                </div>
+            </article>
+
+            <!-- NUMBER GUESS -->
+
+            <article class="game-card"
+                data-category="puzzle"
+                data-name="number guess">
+
+                <div class="game-image orange">🔢</div>
+
+                <div class="game-info">
+                    <h3>Number Guess</h3>
+                    <p>⭐ 4.7 <span>Puzzle</span></p>
+                    <button onclick="playGame('number')">▶ Play Now</button>
+                </div>
+            </article>
+
+            <!-- TIC TAC TOE -->
+
+            <article class="game-card"
+                data-category="action"
+                data-name="tic tac toe">
+
+                <div class="game-image green">❌</div>
+
+                <div class="game-info">
+                    <h3>Tic Tac Toe</h3>
+                    <p>⭐ 4.9 <span>Action</span></p>
+                    <button onclick="playGame('tic')">▶ Play Now</button>
+                </div>
+            </article>
+
+            <!-- PENALTY SHOOTOUT -->
+
+            <article class="game-card"
+                data-category="sports"
+                data-name="penalty shootout">
+
+                <div class="game-image red">⚽</div>
+
+                <div class="game-info">
+                    <h3>Penalty Shootout</h3>
+                    <p>⭐ 4.8 <span>Sports</span></p>
+                    <button onclick="playGame('penalty')">▶ Play Now</button>
+                </div>
+            </article>
+
+            <!-- REACTION TEST -->
+
+            <article class="game-card"
+                data-category="arcade"
+                data-name="reaction test">
+
+                <div class="game-image pink">⚡</div>
+
+                <div class="game-info">
+                    <h3>Reaction Test</h3>
+                    <p>⭐ 4.6 <span>Arcade</span></p>
+                    <button onclick="playGame('reaction')">▶ Play Now</button>
+                </div>
+            </article>
+
+        </div>
+
+        <p id="noResults">No games found.</p>
+    </section>
+
+    <!-- LEADERBOARD -->
+
+    <section class="leaderboard" id="leaderboard">
+
+        <div class="section-heading">
+            <h2>🏆 Leaderboard</h2>
+            <span>TOP PLAYERS</span>
+        </div>
+
+        <div class="ranking">
+            <div><b>🥇</b><strong>BlueLockFan</strong><span>9500 XP</span></div>
+            <div><b>🥈</b><strong>ProGamer</strong><span>8200 XP</span></div>
+            <div><b>🥉</b><strong>NinjaPlayer</strong><span>7600 XP</span></div>
+            <div><b>4</b><strong>GameMaster</strong><span>6800 XP</span></div>
+            <div><b>5</b><strong>CoolPlayer</strong><span>5900 XP</span></div>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <h2>GAME<span>ZONE</span></h2>
+    <p>Play. Compete. Become the Best.</p>
+    <p>© 2026 GAMEZONE. All rights reserved.</p>
+</footer>
+
+<!-- GAME MODAL -->
+
+<div class="modal" id="gameModal">
+    <div class="modal-box">
+        <button class="close" onclick="closeGame()">✕</button>
+        <h2 id="modalTitle">GAME</h2>
+        <div id="gameArea"></div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
